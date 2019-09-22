@@ -30,7 +30,13 @@ message NodeUpdate {
     string node_arg = 5;
 }
 
+enum KeepAliveCommand {
+    NONE = 0;
+    RECONNECT = 1; // node serv is now restarted. please reconnect.
+}
+
 message Response {
     bool ok = 1;
-    string err = 2;
+    KeepAliveCommand command = 2;
+    string err = 3;
 }
