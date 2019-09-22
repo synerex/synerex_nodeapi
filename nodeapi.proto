@@ -13,6 +13,7 @@ service Node {
 message NodeInfo{
     string node_name = 1;
     bool is_server = 2; // node is server?
+    string node_pbase_version = 3; // which protocol base version
 }
 
 message NodeID{
