@@ -31,7 +31,7 @@ message NodeInfo{
 message NodeID{
     int32 node_id = 1;  // unique id for each node in current node server.
     fixed64 secret = 2; // secret id with node_server (Not used for Query)
-    string server_address = 3; // synerex server address (only for registration)
+    string server_info = 3; // synerex server address (only for registration of Server/Gateway)
     int32 keepalive_duration = 4; // at least make keep alive less than this time.
 }
 
