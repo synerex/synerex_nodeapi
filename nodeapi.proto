@@ -20,7 +20,7 @@ enum NodeType {
 message NodeInfo{
     string node_name = 1;
     NodeType node_type = 2; // node is provider/server/gateway?
-    string server_address = 3; // for synerex servers
+    string server_info = 3; // for synerex servers/gateways
     string node_pbase_version = 4; // which protocol base version
     int32 with_node_id = 5;  // for reconnection with previous node_id (usually -1)
     int32 cluster_id = 6; //
