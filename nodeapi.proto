@@ -37,6 +37,7 @@ message NodeID{
 }
 
 message ServerStatus {
+    double cpu = 1; // cpu load average
     double memory = 2; // memory usage rate
     uint64 msg_count = 3; // message count
 }
