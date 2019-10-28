@@ -26,6 +26,7 @@ message NodeInfo{
     int32 cluster_id = 6; //
     string area_id = 7; // for area definition
     repeated uint32 channelTypes = 8; // used channel list
+    string gw_info = 9; // for gateway information
 }
 
 message NodeID{
@@ -35,12 +36,19 @@ message NodeID{
     int32 keepalive_duration = 4; // at least make keep alive less than this time.
 }
 
+message ServerStatus {
+    double cpu = 1; // cpu load average
+    double memory = 2; // memory usage rate
+    uint64 msg_count = 3; // message count
+}
+
 message NodeUpdate {
     int32 node_id = 1;       // unique id for each node in current node server.
     fixed64 secret = 2;      // secret number for each provider (for auth)
     int32 update_count = 3;  // sequential counter for nodes
     int32  node_status = 4;  // running state (health check)
     string node_arg = 5;
+    ServerStatus status = 6; // server status (load average)
 }
 
 enum KeepAliveCommand {
