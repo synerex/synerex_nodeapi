@@ -3,11 +3,18 @@ syntax = "proto3";
 package nodeapi;
 option go_package="github.com/synerex/synerex_nodeapi";
 
+import "google/protobuf/empty.proto";
+
 service Node {
     rpc RegisterNode(NodeInfo) returns (NodeID) {}
     rpc QueryNode(NodeID) returns (NodeInfo){}        // get specific information from nodeID
     rpc KeepAlive(NodeUpdate) returns (Response){}    // each provider should keep alive.
     rpc UnRegisterNode(NodeID) returns (Response){}
+
+    // get connection info (synerex server and provider)
+    rpc QueryConnections(google.protobuf.Empty) returns (ConnectionInfo){}
+    // change relations between provider and synerex server
+    rpc ChangeServer(Connection) returns (Response){}
 }
 
 enum NodeType {
@@ -61,4 +68,13 @@ message Response {
     bool ok = 1;
     KeepAliveCommand command = 2;
     string err = 3;
+}
+
+message Connection {
+    string provider = 1;
+    string server = 2;
+}
+
+message ConnectionInfo {
+    repeated Connection connections = 1;
 }
