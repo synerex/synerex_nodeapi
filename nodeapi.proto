@@ -55,6 +55,7 @@ enum KeepAliveCommand {
     NONE = 0;
     RECONNECT = 1; // node server is now restarted. please reconnect.
     SERVER_CHANGE = 2; // There is change in Synerex Server. Obtain server information.
+    PROVIDER_DISCONNECT = 3; // only for Synerex-Server. Provider is disconnected. Remove Channels
 }
 
 message Response {
