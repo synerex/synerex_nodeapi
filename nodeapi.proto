@@ -1,6 +1,10 @@
 syntax = "proto3";
 
 package nodeapi;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
 option go_package="github.com/synerex/synerex_nodeapi";
 
 service Node {
@@ -27,6 +31,11 @@ message NodeInfo{
     string area_id = 7; // for area definition
     repeated uint32 channelTypes = 8; // used channel list
     string gw_info = 9; // for gateway information
+  // for information for controller
+    string bin_version = 10;  // version of binary
+    int32 count = 11;  // keepalive update count
+    google.protobuf.Timestamp last_alive_time = 12;
+    string keepalive_arg = 13;  // keepalive argument
 }
 
 message NodeID{
